@@ -71,3 +71,7 @@ main {
 .button {
     margin: 20px auto;
 }
+
+.purple-light {
+  background-color: purple;
+}
