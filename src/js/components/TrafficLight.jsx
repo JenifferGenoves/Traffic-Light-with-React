@@ -1,38 +1,38 @@
 import React, { useState } from "react";
 
+// Definir propiedades de semáforo en un arreglo
+
+const lightData = [
+    { id: 'red-light' },
+    { id: 'yellow-light' },
+    { id: 'green-light' },
+];
+
+// Definir componente Global para manejar estado
+
 const TrafficLight = () => {
-    // Componente global para manejar estado
     const [selected, setSelected] = useState("red-light");
 
-    const changeColor = (color) => {
-        setSelected(color)
-    }
-
+    const changeColor = (colorId) => {
+        setSelected(colorId)
+    };
 
     return (
         <main>
             <div className="stick"></div>
             <div className="container">
-                <div 
-                className={`red-light ${selected == "red-light" ? "light-on" : ""}`} 
-                onClick={() => changeColor("red-light") }
-                
-                ></div>
-                    
-                <div 
-                className={`yellow-light ${selected == "yellow-light" ? "light-on" : ""}`} 
-                onClick={() => changeColor("yellow-light") }
-                ></div>
-                    
-                
-                <div className={`green-light ${selected == "green-light" ? "light-on" : ""}`} 
-                onClick={() => changeColor("green-light")}
-                ></div>
+                {lightData.map((light) => (
+          <div
+            
+            key={light.id} 
+            className={`${light.id} ${selected === light.id ? 'light-on' : ''}`}
+            onClick={() => changeColor(light.id)}
+          ></div>
+        ))}
                     
             </div>
         </main>
-    )
-}
-
+    );
+};
 
 export default TrafficLight;
